@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>number Generator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	   function searchKeywords(form) {
+        var temp = document.getElementById("inputBox").value;
+      var input = form.inputbox.value;
+      if (input.includes("wiki") ||temp.includes("wiki")) {
+        document.getElementById("result").innerHTML = "Wiki Instructions";
+      }
+      if (input.includes("game")||temp.includes("game")) {
+        document.getElementById("result").innerHTML = "this code is too big please use this link https://docs.google.com/document/d/1w3mp7HNcVmpb6cSLAu5aj7AjBqWeDw0CsgQZw6QWAzw/edit?usp=sharing";
+      }
+      if (input.includes("video")) {
+        document.getElementById("result").innerHTML = "Video Instructions";
+      }
+    }
+	</script>
+	<style>
+		body {
+			background-color: #F0F0F0;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width: 80%;
+			margin: 0 auto;
+			text-align: center;
+			padding-top: 50px;
+		}
+		h1 {
+			font-size: 36px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 20px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: 1px solid #333;
+		}
+		input[type="submit"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 20px;
+			margin-bottom: 20px;
+			background-color: #333;
+			color: #F0F0F0;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #F0F0F0;
+			color: #333;
+		}
+		.result {
+			background-color: #333;
+			color: #F0F0F0;
+			padding: 20px;
+			margin-top: 20px;
+			border-radius: 5px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>guess the number form 1 to 10</h1>
+		<form>
+			<input type="text" name="inputbox" placeholder="Type your number here...">
+			<input type="submit" id="inputBox" value="Generate" onclick="searchKeywords(this.form)">
+		</form>
+		<div class="result" >
+			<p id="result"></p>
+		</div>
+	</div>
+</body>
+</html>

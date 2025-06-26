@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input[type="number"] {
+            padding: 5px;
+            width: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100000  :</p>
+    <input type="number" id="guessInput" min="1" max="1000">
+    <button onclick="checkGuess()">Guess</button>
+    <p id="result"></p>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100000) + 1;
+
+        function checkGuess() {
+            const guessInput = document.getElementById('guessInput');
+            const guess = parseInt(guessInput.value);
+
+            if (guess === randomNumber) {
+                setResult("Congratulations! You guessed the correct number.");
+            } else if (guess < randomNumber) {
+                setResult("Wrong guess. Try a higher number.");
+            } else {
+                setResult("Wrong guess. Try a lower number.");
+            }
+
+            guessInput.value = '';
+            guessInput.focus();
+        }
+
+        function setResult(message) {
+            document.getElementById('result').textContent = message;
+        }
+    </script>
+</body>
+</html>

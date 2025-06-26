@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .deleteButton{
+            background-color: red;
+            color: white;
+            border-radius: 8px 6px 6px 6px;
+        }
+   
+    </style>
+</head>
+<body>
+   <input id="todoInput">
+   <button onclick="AddItemToList()">Add To List</button>
+   <div id="myOutput"></div>
+ 
+   <script>
+       
+
+       function saveCookies()
+       {
+           let myToDoList = ""
+           for(let i = 0; i < todoList.length; i++)
+           {
+               myToDoList += todoList[i] + ",";
+           }
+           document.cookie = ""
+       }
+ 
+ 
+ 
+    let todoList = []
+
+        document.getElementById('todoInput').addEventListener('keypress', (event) => {
+            if(event.key === 'Enter')
+            {
+                AddItemToList();
+            }
+        });
+ 
+        function AddItemToList()
+        {
+            let newItem = document.getElementById('todoInput').value;
+            if(newItem ==='') { return; }
+            todoList.push(newItem);
+            UpdateItems();
+            document.getElementById('todoInput').value = "";
+        }
+ 
+        function UpdateItems()
+        {
+         document.getElementById('myOutput').innerText = "";
+ 
+            for(let i = 0; i < todoList.length; i++)
+            {
+                const newDiv = document.createElement('div');
+                newDiv.id = 'myDiv';
+                document.getElementById('myOutput').appendChild(newDiv);
+ 
+                const todoListItem = document.createElement('span');
+                todoListItem.innerText = todoList[i];
+                todoListItem.classList.add('todoListItem');
+                newDiv.appendChild(todoListItem);  
+ 
+ 
+                const deleteBtn = document.createElement('button');
+                deleteBtn.innerText = 'Delete';
+                deleteBtn.classList.add('deleteButton');
+                deleteBtn.addEventListener('click', () => {
+                    deleteItem(i);
+                });
+                newDiv.appendChild(deleteBtn);
+            }
+ 
+        }
+        function deleteItem(index)
+        {
+            todoList.splice(index, 1);
+            UpdateItems();
+        }
+    </script>
+</body>
+</html>
