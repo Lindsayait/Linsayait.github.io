@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Countdown Timer</title>
+<style>
+  #countdown {
+    font-family: Arial, sans-serif;
+    font-size: 150px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 175px;
+  }
+  #countdown span {
+    margin-right: 10px;
+  }
+
+  body{
+    background-color: rgb(18, 18, 18);
+    color: rgb(225, 225, 225);
+  }
+
+  .light-mode {
+  background-color: rgb(232, 232, 232);
+  color: rgb(14, 14, 14);
+}
+
+  .button {
+    margin: 0;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: rgb(5, 202, 68);
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="countdown">
+  <span id="days"></span>D
+  <span id="hours"></span>H
+  <span id="minutes"></span>M
+  <span id="seconds"></span>S
+</div>
+
+<button class="button" onclick="myFunction()">Toggle dark mode</button>
+
+<script>
+  const countdown = () => {
+    const endDate = new Date("2025-06-27T00:00:01").getTime();
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+  };
+
+  setInterval(countdown, 1000);
+
+
+  function myFunction() {
+   var element = document.body;
+   element.classList.toggle("light-mode");
+}
+</script>
+
+</body>
+</html>
